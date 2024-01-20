@@ -72,7 +72,7 @@ class _ChatPageState extends State<ChatPage> {
             appBar: AppBar(
               title: Column(
                 children: [
-                  Image.asset('assets/images/match.png', scale: 2.0),
+                  // Image.asset('assets/images/match.png', scale: 2.0),
                   Text(widget.name),
                 ],
               ),
@@ -95,7 +95,7 @@ class _ChatPageState extends State<ChatPage> {
             ),
             bottomNavigationBar: Padding(
               padding:
-                  const EdgeInsets.only(bottom: 140.0, left: 16.0, right: 16.0),
+                  const EdgeInsets.only(bottom: 0.0, left: 0.0, right: 0.0),
               child: Row(
                 children: [
                   Expanded(

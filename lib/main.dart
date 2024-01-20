@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:humorfy/pages/auth.dart';
-import 'package:humorfy/pages/discover.dart';
+import 'package:humorfy/pages/chat_page.dart';
+import 'package:humorfy/pages/messages.dart';
+import 'package:humorfy/pages/path.dart';
 import 'package:humorfy/pages/info.dart';
-import 'package:humorfy/pages/matches_page.dart';
 import 'package:humorfy/pages/profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -39,10 +40,7 @@ class _MyAppState extends State<MyApp> {
     }
 
     return MaterialApp(
-        theme: ThemeData(
-            // Change to const Color.fromRGBO(255, 115, 115, 1)
-            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)),
-        title: "Mile High Matches",
+        title: "Humorfy",
         home: DefaultTabController(
             length: 3,
             child: FutureBuilder(
@@ -71,7 +69,7 @@ class Views extends StatelessWidget {
       bottom: const TabBar(tabs: [
         Padding(
           padding: EdgeInsets.only(bottom: 40.0),
-          child: Tab(icon: Icon(Icons.airplanemode_on, size: 45.0)),
+          child: Tab(icon: Icon(Icons.house, size: 45.0)),
         ),
         Padding(
             padding: EdgeInsets.only(bottom: 40.0),
@@ -86,8 +84,8 @@ class Views extends StatelessWidget {
       body: const TabBarView(
         physics: NeverScrollableScrollPhysics(),
         children: [
-          DiscoverPage(),
-          MatchesPage(),
+          PathPage(),
+          ChatPage(name: "Ryan", receiverUserId: '89',),
           ProfilePage(),
         ],
       ),
@@ -98,5 +96,3 @@ class Views extends StatelessWidget {
     );
   }
 }
-
-// Home, Connect, Stats

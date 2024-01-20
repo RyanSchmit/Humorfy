@@ -15,7 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future getUserInfo() async {
     var userDoc =
-        FirebaseFirestore.instance.collection("profiles").doc(user.uid);
+        FirebaseFirestore.instance.collection("users").doc(user.uid);
     return await userDoc.get().then((snapshot) => snapshot.data());
   }
 
@@ -32,23 +32,29 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Padding(
                           padding: const EdgeInsets.all(12.0),
-                          child: Image.asset('assets/images/profilePhoto.png')),
-                      const Text("About", style: TextStyle(fontSize: 60)),
-                      const Text("Full Name:",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          child: Image.asset('assets/images/avatar0.png', scale: 2.0,)),
+                      const Text("Your Profile", style: TextStyle(fontSize: 40)),
+                      // Nickname
+                      const Text("Nickname:",
+                          style: TextStyle(fontSize: 20, color: Colors.lightBlue)),
                       Text(snapshot.data['name'],
                           style: const TextStyle(
                               fontSize: 25, color: Colors.black)),
-                      const Text("Bio:",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
-                      Text(snapshot.data['bio'],
-                          style: const TextStyle(
+
+                      // Sleep
+                      const Text("Average Sleep in Past 7 days:",
+                          style: TextStyle(fontSize: 20, color: Colors.lightBlue)),
+                      const Text("7.8 hours",
+                          style: TextStyle(
                               fontSize: 25, color: Colors.black)),
-                      const Text("Email:",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
-                      Text(user.email!,
-                          style: const TextStyle(
+
+                      // Active Day Streak
+                      const Text("Fitness Streak:",
+                          style: TextStyle(fontSize: 20, color: Colors.lightBlue)),
+                      const Text("20 days",
+                          style: TextStyle(
                               fontSize: 25, color: Colors.black)),
+                              
                       MaterialButton(
                         onPressed: () async {
                           await FirebaseAuth.instance.signOut().then(
