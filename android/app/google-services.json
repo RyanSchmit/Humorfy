@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "994417666781",
+    "project_id": "humorfy-76a25",
+    "storage_bucket": "humorfy-76a25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994417666781:android:8b4640a6d11e9daae3c934",
+        "android_client_info": {
+          "package_name": "com.example.humorfy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEZmnD9E9fA7ZRFI-w28L6PZQ8KxIYT5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
