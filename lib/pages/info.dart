@@ -12,16 +12,14 @@ class InfoPage extends StatefulWidget {
 
 class _InfoPageState extends State<InfoPage> {
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _genderController = TextEditingController();
-  final TextEditingController _bioController = TextEditingController();
+  final int avatarNumber = 0;
 
   final user = FirebaseAuth.instance.currentUser!;
 
   Future addUserData() async {
-    await FirebaseFirestore.instance.collection('profiles').doc(user.uid).set({
+    await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
       'name': _nameController.text.trim(),
-      'bio': _bioController.text.trim(),
-      'gender': _genderController.text.trim(),
+      'avatar': avatarNumber,
     });
   }
 
@@ -32,7 +30,6 @@ class _InfoPageState extends State<InfoPage> {
         height: 1000,
         width: 1000,
         child: Scaffold(
-          backgroundColor: const Color.fromRGBO(255, 115, 115, 1),
           body: Padding(
             padding: const EdgeInsets.only(
                 left: 16.0, right: 16.0, top: 6.0, bottom: 6.0),
@@ -55,49 +52,29 @@ class _InfoPageState extends State<InfoPage> {
                     controller: _nameController,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: "Name",
+                        labelText: "nickname",
                         labelStyle: TextStyle(color: Colors.black)),
                   ),
                 ),
                 const SizedBox(height: 32.0),
 
-                // Gender
-                Column(
+                // Avatar
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Align(
-                        alignment: Alignment.topLeft, child: Text("Gender: ")),
-                    GenderButtons(controller: _genderController),
+                    Icon(
+                      Icons.arrow_back_ios,
+                    ),
+                    Image.asset(
+                      'assets/images/avatar0.png',
+                      scale: 3.0,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                    ),
                   ],
                 ),
-                const SizedBox(height: 32.0),
-
-                // Bio
-                const Align(alignment: Alignment.topLeft, child: Text("Bio: ")),
-                Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white)),
-                  child: TextField(
-                    cursorColor: Colors.black,
-                    controller: _bioController,
-                    maxLines: 10,
-                  ),
-                ),
-                const SizedBox(height: 32.0),
-
-                // Upload Photo
-                const Align(alignment: Alignment.topLeft, child: Text("Bio: ")),
-                Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white)),
-                    child: MaterialButton(
-                      onPressed: () => print("Uploading"),
-                      child: const Text("Upload Image"),
-                    )),
-                const SizedBox(height: 32.0),
+                const SizedBox(height: 50.0),
 
                 // Sign up button
                 ElevatedButton(

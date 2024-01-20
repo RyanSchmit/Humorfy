@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         return null;
       } else {
         var userDoc =
-            FirebaseFirestore.instance.collection("profiles").doc(user.uid);
+            FirebaseFirestore.instance.collection("users").doc(user.uid);
         return await userDoc.get().then((snapshot) => snapshot.exists);
       }
     }
