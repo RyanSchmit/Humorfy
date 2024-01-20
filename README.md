@@ -1,6 +1,6 @@
-# humorfy
+# Humorfy
 
-A new Flutter project.
+A fitness and mental health app
 
 ## Getting Started
 
